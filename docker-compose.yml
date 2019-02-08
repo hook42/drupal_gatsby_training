@@ -1,0 +1,35 @@
+version: '3'
+services:
+  db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: drupal
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+  drupal:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile-drupal
+    ports:
+      - "8080:80"
+    volumes:
+      - ./drupal:/app
+    restart: always
+  gatsby:
+    build:
+      context: .
+      dockerfile: Dockerfile-gatsby
+    ports:
+      - "8888:8000"
+    environment:
+      - NODE_ENV=dev
+    working_dir: /app
+    volumes:
+      - ./gatsby:/app
+    command: tail -f /dev/null
+volumes:
+  db_data:
