@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#composer install
+
+if (exec drush status bootstrap | grep -q Successful) ; then
+  echo "Drupal has already been installed. Skipping installation."
+else
+  echo "Installing Drupal..."
+  drush site-install demo_umami --account-name=admin --account-pass=admin --db-url=mysql://root:drupal@db:3306/drupal -y
+fi
+
+exec docker-php-entrypoint apache2-foreground
