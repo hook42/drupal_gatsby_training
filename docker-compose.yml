@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: Dockerfile-drupal
     ports:
-      - "8080:80"
+      - "9667:80"
     volumes:
       - ./drupal:/app
     command: ./checkinstall
@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile-gatsby
     ports:
-      - "8888:8000"
+      - "9668:8000"
     environment:
       - NODE_ENV=dev
     working_dir: /app
