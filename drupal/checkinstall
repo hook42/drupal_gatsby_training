@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#composer install
+composer install
 
 if (exec drush status bootstrap | grep -q Successful) ; then
   echo "Drupal has already been installed. Skipping installation."
