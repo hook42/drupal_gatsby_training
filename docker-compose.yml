@@ -18,6 +18,7 @@ services:
     volumes:
       - ./drupal:/app
     command: ./checkinstall
+    entrypoint: ./checkinstall
   gatsby:
     build:
       context: .

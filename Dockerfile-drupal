@@ -21,3 +21,7 @@ RUN rm -rf /var/www/html/*
 COPY apache-drupal.conf /etc/apache2/sites-enabled/000-default.conf
 
 WORKDIR /app
+
+COPY drupal .
+
+RUN echo "Drupal installation will begin after the containers have all come up - if you get a 404 page, please wait a few minutes and refresh again."
