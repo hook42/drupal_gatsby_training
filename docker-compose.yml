@@ -7,6 +7,10 @@ services:
       MYSQL_ROOT_PASSWORD: drupal
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 100
   drupal:
     depends_on:
       - db
@@ -17,7 +21,7 @@ services:
       - "9667:80"
     volumes:
       - ./drupal:/app
-    command: ./checkinstall
+    restart: always
   gatsby:
     build:
       context: .
