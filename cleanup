@@ -1,0 +1,3 @@
+rm -rf drupal
+git checkout -- drupal
+docker-compose down --rmi all -v --remove-orphans
