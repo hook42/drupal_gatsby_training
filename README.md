@@ -27,8 +27,8 @@ For more information about Hook 42, please visit our website at [http://www.hook
 A server running Drupal is loaded and installed from the command above.
 
 1. From Browser: [http://localhost:9667](http://localhost:9667)
-  
-  
+
+
 ### Gatsby
 
 A server running Gatsby is loaded and installed from the command above.
@@ -41,8 +41,8 @@ The following steps demonstrate how to go into the server and execute Gatsby com
 
 ## Cleaning up the project locally
 
-After you complete this training, 
+### Reset Drupal directory to initial state and remove docker containers:
+`./cleanup`
 
-### Clean up the running docker instances
-
-### Clean up the images
+### Remove only docker containers:
+`docker-compose down --rmi all -v --remove-orphans`
