@@ -33,6 +33,7 @@ services:
     working_dir: /app
     volumes:
       - ./gatsby:/app
+      - ./drupal/web/sites/default/files:/app/static/drupal-files
     command: tail -f /dev/null
 volumes:
   db_data:
