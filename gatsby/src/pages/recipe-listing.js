@@ -12,7 +12,7 @@ const RecipeListing = ({ data }) => (
     { data.allNodeRecipe.edges.map((recipe) => (
       <RecipeTeaser
         key={recipe.node.id}
-        imgSrc={'/drupal' + recipe.node.relationships.field_image.uri.url}
+        imgSrc={recipe.node.relationships.field_image.filename}
         recipeTitle={recipe.node.title}
         recipeSummary={recipe.node.field_summary.value}
       />
@@ -34,6 +34,7 @@ export const query = graphql`
           relationships {
             field_image {
               id
+              filename
               uri {
                 value
                 url
