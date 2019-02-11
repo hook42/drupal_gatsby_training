@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y \
 	git \
 	mysql-client \
 	vim \
-	wget
+	wget \
+  unzip
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 	php composer-setup.php && \
