@@ -3,13 +3,47 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import RecipeTeaser from "../components/recipe-teaser"
 
-const RecipeListing = () => (
+const RecipeListing = ({ data }) => (
   <Layout>
     <SEO title="Recipe Listing" keywords={[`gatsby`, `application`, `react`]} />
     <h1>Recipe Listing</h1>
-    <p>Listings go here!</p>
+    { data.allNodeRecipe.edges.map((recipe) => (
+      <RecipeTeaser
+        key={recipe.node.id}
+        imgSrc={'/drupal' + recipe.node.relationships.field_image.uri.url}
+        recipeTitle={recipe.node.title}
+        recipeSummary={recipe.node.field_summary.value}
+      />
+    ) )}
   </Layout>
 )
+
+export const query = graphql`
+  query RecipeQuery {
+  	allNodeRecipe {
+      edges {
+        node {
+          id
+          field_summary {
+            value
+          }
+          title
+          created(formatString: "MMMM Do, YYYY")
+          relationships {
+            field_image {
+              id
+              uri {
+                value
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default RecipeListing
