@@ -1,9 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby + Drupal 8`,
+    slogan: `A Match Made in Heaven`,
+    description: `A demo site made in our Gatsby + Drupal training session at Florida DrupalCamp 2019!`,
+    author: `@porkloin`,
   },
+  pathPrefix: "/drupal_gatsby_training",
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -25,6 +27,16 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+				// This is the address of our Drupal docker container - not the address exposed to our client machine.
+				// If you were working with Gatsby on your local machine with a remote Drupal site, you could point
+				// it directly to it's web address.
+        baseUrl: `http://drupal/`,
+        apiBase: `jsonapi`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
