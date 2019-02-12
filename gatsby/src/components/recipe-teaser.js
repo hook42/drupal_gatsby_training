@@ -3,10 +3,12 @@ import { Link } from "gatsby"
 import { withPrefix } from 'gatsby'
 
 
-const RecipeTeaser = ({imgSrc, recipeTitle, recipeDate, recipeSummary}) => (
+const RecipeTeaser = ({imgSrc, recipeTitle, recipeDate, recipeSummary, recipeSlug}) => (
   <article>
     <img src={withPrefix('drupal-files/' + imgSrc)} alt="" />
-    <h2>{recipeTitle}</h2>
+    <Link to={recipeSlug}>
+      <h2>{recipeTitle}</h2>
+    </Link>
     <p>{recipeDate}</p>
     <p>{recipeSummary}</p>
   </article>

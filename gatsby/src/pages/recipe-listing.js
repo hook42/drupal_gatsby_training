@@ -15,6 +15,7 @@ const RecipeListing = ({ data }) => (
         recipeDate={recipe.node.created}
         recipeTitle={recipe.node.title}
         recipeSummary={recipe.node.field_summary.value}
+        recipeSlug={recipe.node.fields.slug}
       />
     ) )}
   </Layout>
@@ -30,6 +31,9 @@ export const query = graphql`
             value
           }
           title
+          fields {
+            slug
+          }
           created(formatString: "MMMM Do, YYYY")
           relationships {
             field_image {
