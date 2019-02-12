@@ -5,6 +5,7 @@ module.exports = {
     description: `A demo site made in our Gatsby + Drupal training session at Florida DrupalCamp 2019!`,
     author: `@porkloin`,
   },
+  pathPrefix: "/drupal_gatsby_training",
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
