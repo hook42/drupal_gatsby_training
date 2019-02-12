@@ -17,7 +17,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
-    "sharp": "^0.21.3"
+    "sharp": "^0.21.3",
+    "transliteration": "^2.1.2"
   },
   "keywords": [
     "gatsby"
