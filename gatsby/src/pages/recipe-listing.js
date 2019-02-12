@@ -13,6 +13,7 @@ const RecipeListing = ({ data }) => (
       <RecipeTeaser
         key={recipe.node.id}
         imgSrc={recipe.node.relationships.field_image.filename}
+        recipeDate={recipe.node.created}
         recipeTitle={recipe.node.title}
         recipeSummary={recipe.node.field_summary.value}
       />
