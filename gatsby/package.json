@@ -30,6 +30,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public --repo git@github.com:username/drupal_gatsby_training.git --user 'Your Name <you@example.com>'",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "repository": {
