@@ -4,12 +4,12 @@ import { withPrefix } from 'gatsby'
 
 
 const RecipeTeaser = ({imgSrc, recipeTitle, recipeDate, recipeSummary}) => (
-  <article>
+  <div>
     <img src={withPrefix('drupal-files/' + imgSrc)} alt="" />
     <h2>{recipeTitle}</h2>
     <p>{recipeDate}</p>
     <p>{recipeSummary}</p>
-  </article>
+  </div>
 )
 
 export default RecipeTeaser
