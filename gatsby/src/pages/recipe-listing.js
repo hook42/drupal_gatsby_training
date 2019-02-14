@@ -11,7 +11,7 @@ const RecipeListing = ({ data }) => (
     { data.allNodeRecipe.edges.map((recipe) => (
       <RecipeTeaser
         key={recipe.node.id}
-        imgSrc={recipe.node.relationships.field_image.filename}
+        imgFluid={recipe.node.relationships.field_image.localFile.childImageSharp.fluid}
         recipeDate={recipe.node.created}
         recipeTitle={recipe.node.title}
         recipeSummary={recipe.node.field_summary.value}
@@ -37,11 +37,12 @@ export const query = graphql`
           created(formatString: "MMMM Do, YYYY")
           relationships {
             field_image {
-              id
-              filename
-              uri {
-                value
-                url
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
               }
             }
           }
