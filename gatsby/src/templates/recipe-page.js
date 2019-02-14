@@ -2,13 +2,19 @@ import React from "react"
 import { withPrefix } from 'gatsby'
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import Img from "gatsby-image"
 
 const RecipePage = ({ data }) => (
   <Layout>
     <article>
       <h1>{data.nodeRecipe.title}</h1>
       <i><p className="publication-date">{data.nodeRecipe.created}</p></i>
-      <img src={withPrefix('drupal-files/' + data.nodeRecipe.relationships.field_image.filename)} />
+      <Img
+        style={{
+          maxWidth: '500px',
+        }}
+        fluid={data.nodeRecipe.relationships.field_image.localFile.childImageSharp.fluid}
+      />
       <div class="details" style={{
         display: 'flex',
         flexDirection: 'column',
@@ -46,6 +52,13 @@ export const query = graphql`
         field_image {
           id
           filename
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
