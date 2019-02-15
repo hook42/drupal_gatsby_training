@@ -22,18 +22,5 @@ services:
     volumes:
       - ./drupal:/app
     restart: always
-  gatsby:
-    build:
-      context: .
-      dockerfile: Dockerfile-gatsby
-    ports:
-      - "9668:8000"
-    environment:
-      - NODE_ENV=dev
-    working_dir: /app
-    volumes:
-      - ./gatsby:/app
-      - ~/.ssh:/root/.ssh
-    command: tail -f /dev/null
 volumes:
   db_data:
